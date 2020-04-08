@@ -6,10 +6,15 @@ const express = require('express')
 const router = express.Router()
 
 
-/*
-  "/v2/signin"
-  POST: Api call to sign in from the app
-*/
+  /**
+     * API method for signing  in a user
+     * @param {string} email - a user's email address
+     * @param {string} password - a user's password
+     * @class
+     * @name User
+  */
+
+
 router.post('/signin', (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
@@ -46,13 +51,11 @@ router.post('/signin', (req, res) => {
               success: true,
               message: "Login successfull.",
               user: {
-                providerID: "",
                 uid: user._id,
                 displayName: user.displayName,
                 photoURL: user.photoURL,
                 email: user.email,
-                phoneNumber: user.phoneNumber,
-                tags: user.tags,
+                groups: user.tags,
                 color: user.color,
                 community: user.community,
                 token: token
